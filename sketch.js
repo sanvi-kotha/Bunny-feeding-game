@@ -20,14 +20,20 @@ var bubble,bubble_img;
 
 function preload()
 {
-  bubble_img = loadImage("bubble.png")
+  bubble_img = loadImage("bubble.png");
+
   bg_img = loadImage('background.png');
+
   food = loadImage('melon.png');
+
   rabbit = loadImage('Rabbit-01.png');
 
   blink = loadAnimation("blink_1.png","blink_2.png","blink_3.png");
+
   eat = loadAnimation("eat_0.png" , "eat_1.png","eat_2.png","eat_3.png","eat_4.png");
+
   sad = loadAnimation("sad_1.png","sad_2.png","sad_3.png");
+
   star_img = loadImage('star.png');
   
   blink.playing = true;
@@ -44,14 +50,14 @@ function setup() {
   world = engine.world;
 
    var fruit_options = {
-    restitution: 0.8
+    restitution: 0.8 // restitution is the force or energy with which the object will bounce back after colliding with some other object  value can range usually from 0 - 1
   }
   
-  ground =new Ground(250,height-10,width,20);
-  fruit = Bodies.circle(100,400,15,fruit_options);
-  World.add(world,fruit);
+  ground =new Ground(250,height-10,width,20); // object from the class Ground.js
+  fruit = Bodies.circle(100,400,15,fruit_options); // body fruit from system class Matter.Bodies in a circle shape with options added as a variable fruit_options
+  World.add(world,fruit); // adding the body in  our world
   
-  bubble = createSprite(290,460,20,20);
+  bubble = createSprite(290,460,20,20); // sprite
   bubble.addImage(bubble_img);
   bubble.scale = 0.1;
   
@@ -78,6 +84,7 @@ function setup() {
   button.position(200,320);
   button.size(50,50);
 
+  //btn2
   button2 = createImg('cut_btn.png');
   button2.position(30,420);
   button2.size(50,50);
@@ -89,6 +96,8 @@ function setup() {
   //button2.mouseClick(drop);
 
   button2.mouseClicked(drop);
+
+  button.mouseClicked(remove_rope);
 
   ellipseMode(RADIUS);
 }
@@ -117,9 +126,9 @@ function draw()
    bubble.visible = false;
     World.remove(engine.world,fruit);
     fruit = null;
-    bunny.change('eating');
+    //bunny.change('eating');
 
-    //bunny.changeAnimation('eating');
+    bunny.changeAnimation('eating');
 
     //bunny.changeAnimation();
 
